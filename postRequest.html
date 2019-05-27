@@ -1,0 +1,64 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<script>
+ 
+ // Send a GET Request to Typicode to request for the 56th post.
+   fetch("https://jsonplaceholder.typicode.com/posts/56")
+   .then(r => r.json())
+   .then(r => 
+   {   
+      const paragraph = document.createElement("p");
+      paragraph.textContent = r.body;
+      document.body.appendChild(paragraph);
+      console.log(r);
+      console.log(paragraph);
+
+   });
+
+   //Send a POST request to create a post
+   fetch('https://jsonplaceholder.typicode.com/posts',{
+   
+   method:'post',
+   headers:{
+       'Content-Type':'application/json'
+   },
+   body:JSON.stringify({
+      title:'this is my first article',
+      body: 'A shameless plug about myself'
+   })
+   })
+   .then(r=>r.json())
+   .then(d=> console.log(d))
+
+   //Send a PUT request to change the 23rd post
+   fetch("https://jsonplaceholder.typicode.com/posts/23",{
+
+       method:'put',
+       headers:{
+           'Content-Type':'application/json'
+       },
+       body:JSON.stringify({
+           title:'this is my 50th article',
+           body:'Hello Joel'
+       })
+   })
+   .then(r=>r.json())
+   .then(d=> console.log(d));
+
+   //Delete the 90th post
+   fetch("https://jsonplaceholder.typicode.com/posts/90",{
+       method:'delete'
+   })
+
+
+</script>
+
+</body>
+
+</html>
